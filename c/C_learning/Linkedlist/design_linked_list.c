@@ -1,35 +1,33 @@
 #include <stdio.h>
-#include <cstdlib>
-
-typedef int Elemtype;
+#include <stdlib.h>
 
 typedef struct Node{
-    Elemtype data;
-    struct Node *next;
+    int data;           // 數據
+    struct Node *next;  // 指到下一個節點位置
 }MyLinkedList;
 
-MyLinkedList* myLinkedListCreate() {                                // 定義了一個帶頭節點(head)的單鏈表,並返回頭指針
-    MyLinkedList *obj=(MyLinkedList *)malloc(sizeof(MyLinkedList));
-    obj -> next = NULL;
-    return obj;
+MyLinkedList* myLinkedListCreate() {                                    // 定義了一個帶頭節點(head)的單鏈表,並返回頭指針
+    MyLinkedList *obj=(MyLinkedList *)malloc(sizeof(MyLinkedList));     // 建立一個自訂MyLinkedList格式
+    obj -> next = NULL;                                                 // 預設指向空
+    return obj;                                                         // 回傳head
 }
 
-int myLinkedListGet(MyLinkedList* obj, int index) {
-    MyLinkedList *p = obj -> next;
+int myLinkedListGet(MyLinkedList* obj, int index) {                     // 取得索引節點的值
+    MyLinkedList *p = obj -> next;                                      // 取得第一個指向下一個的位址
     int j = 0;
-    while(p != NULL && j < index) {                                 // 從頭開始尋找
+    while(p != NULL && j < index) {                                     // 從頭開始尋找直到找到第index個
         j++;
         p = p -> next;
     }
     if (p == NULL || index < 0) {
         return -1;
     } else {
-        return p -> data;
+        return p -> data;                                               // 取得第index的值
     }
 }
 
 void myLinkedListAddAtHead(MyLinkedList* obj, int val) {
-    MyLinkedList *p = obj;
+    MyLinkedList *p = obj;                                              
     MyLinkedList *s = (MyLinkedList *)malloc(sizeof(MyLinkedList));
     
     s -> data = val;
