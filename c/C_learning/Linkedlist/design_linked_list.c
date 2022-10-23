@@ -102,6 +102,5 @@ int main() {
     MyLinkedList* obj = myLinkedListCreate();
     int param_1 = myLinkedListGet(obj, 1);
     myLinkedListAddAtHead(obj, 3);
-
     return 0;
 }
